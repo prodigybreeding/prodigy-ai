@@ -4,29 +4,100 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prodigy AI</title>
+ 
 <style>
-body{background:#0f0f0f;color:white;font-family:Arial,sans-serif;text-align:center;margin:0;padding:40px 20px;}
-.logo{width:350px;max-width:90%;}
-.tagline{color:#d4af37;font-size:22px;margin-top:20px;margin-bottom:30px;}
-.preview{display:none;max-width:500px;width:100%;margin:20px auto;border-radius:12px;}
-.button{background:#d4af37;color:black;border:none;padding:12px 24px;border-radius:6px;font-weight:bold;cursor:pointer;}
-.button:hover{opacity:.9;}
-#status{margin-top:20px;color:#d4af37;}
+body{
+background:#0f0f0f;
+color:white;
+font-family:Arial,sans-serif;
+text-align:center;
+margin:0;
+padding:40px 20px;
+}
+ 
+.logo{
+width:350px;
+max-width:90%;
+}
+ 
+.tagline{
+color:#d4af37;
+font-size:22px;
+margin-top:20px;
+margin-bottom:30px;
+}
+ 
+.preview{
+display:none;
+max-width:500px;
+width:100%;
+margin:20px auto;
+border-radius:12px;
+}
+ 
+.button{
+background:#d4af37;
+color:black;
+border:none;
+padding:12px 24px;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+}
+ 
+.button:hover{
+opacity:.9;
+}
+ 
+#status{
+margin-top:20px;
+}
 </style>
+ 
 </head>
+ 
 <body>
+ 
 <img src="logo.png" alt="Prodigy Logo" class="logo">
-<div class="tagline">AI-Powered Morph Identification</div>
-<input type="file" id="photo" accept="image/*">
+ 
+<div class="tagline">
+AI-Powered Morph Identification
+</div>
+ 
+<input
+type="file"
+id="photo"
+accept="image/*"
+capture="environment">
+ 
 <br><br>
+ 
 <img id="preview" class="preview" alt="Preview">
+ 
 <br>
-<button class="button" onclick="analyzeMorph()">Analyze Morph</button>
+ 
+<button class="button" onclick="analyzeMorph()">
+Analyze Morph
+</button>
+ 
 <div id="status"></div>
+ 
 <script>
-const input=document.getElementById('photo');
-const preview=document.getElementById('preview');
-input.addEventListener('change',function(e){const file=e.target.files[0];if(!file)return;preview.src=URL.createObjectURL(file);preview.style.display='block';});
+ 
+const input = document.getElementById("photo");
+const preview = document.getElementById("preview");
+ 
+input.addEventListener("change", function(e){
+ 
+const file = e.target.files[0];
+ 
+if(!file) return;
+ 
+preview.src = URL.createObjectURL(file);
+preview.style.display = "block";
+ 
+});
+ 
 async function analyzeMorph(){
  
 const file = document.getElementById("photo").files[0];
@@ -45,46 +116,29 @@ reader.onload = async function(){
  
 try{
  
-const response = await fetch("/api/analyze", {
-method: "POST",
-headers: {
+const response = await fetch("/api/analyze",{
+method:"POST",
+headers:{
 "Content-Type":"application/json"
 },
-body: JSON.stringify({
-image: reader.result
+body:JSON.stringify({
+image:reader.result
 })
 });
  
 const data = await response.json();
  
-document.getElementById("status").innerHTML = `
-<div style="
-margin-top:20px;
-background:#1a1a1a;
-border:1px solid #333;
-border-radius:10px;
-padding:20px;
-text-align:left;
-max-width:600px;
-margin-left:auto;
-margin-right:auto;
-">
-<h3 style="color:#d4af37;">
-PRODIGY AI ANALYSIS
-</h3>
- 
-<pre style="
-white-space:pre-wrap;
-color:white;
-font-family:Arial;
-">${data.result}</pre>
-</div>
-`;
+document.getElementById("status").innerHTML =
+"<pre style='text-align:left;max-width:700px;margin:20px auto;white-space:pre-wrap;color:white;'>" +
+JSON.stringify(data,null,2) +
+"</pre>";
  
 }catch(err){
  
 document.getElementById("status").innerHTML =
 "❌ Error during analysis";
+ 
+console.error(err);
  
 }
  
@@ -93,6 +147,8 @@ document.getElementById("status").innerHTML =
 reader.readAsDataURL(file);
  
 }
+ 
 </script>
+ 
 </body>
 </html>
