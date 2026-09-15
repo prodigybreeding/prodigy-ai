@@ -16,7 +16,7 @@ const response = await fetch(
 method: "POST",
 headers: {
 "Content-Type": "application/json",
-Authorization: `Bearer ${process.env.OPENAI_API_KEY}`
+"Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
 },
 body: JSON.stringify({
 model: "gpt-4o",
@@ -24,13 +24,11 @@ messages: [
 {
 role: "system",
 content: `
-You are an expert Western Hognose Snake (Heterodon nasicus) breeder.
- 
-Analyze the uploaded image.
+You are an expert Western Hognose Snake breeder.
  
 Identify ONLY visible morph traits.
  
-Never identify:
+Never infer:
 - het
 - poss het
 - hidden genes
@@ -66,7 +64,13 @@ max_tokens: 300
 );
  
 const data = await response.json();
-return res.status(200).json(data);
+ 
+if (!response.ok) {
+return res.status(500).json(data);
+}
+ 
+return res.status(200).json({
+result: data.choices[0].message.content
 });
  
 } catch (error) {
@@ -77,15 +81,4 @@ error: error.message
  
 }
  
-}
-export default function handler(req, res) {
-res.status(200).json({
-success: true,
-prediction: "Conda",
-confidence: "92%",
-alternatives: [
-"Arctic",
-"Normal"
-]
-});
 }
