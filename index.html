@@ -27,7 +27,72 @@ body{background:#0f0f0f;color:white;font-family:Arial,sans-serif;text-align:cent
 const input=document.getElementById('photo');
 const preview=document.getElementById('preview');
 input.addEventListener('change',function(e){const file=e.target.files[0];if(!file)return;preview.src=URL.createObjectURL(file);preview.style.display='block';});
-function analyzeMorph(){const file=document.getElementById('photo').files[0];if(!file){alert('Please select an image first.');return;}document.getElementById('status').innerHTML='Analyzing image...';}
+async function analyzeMorph(){
+ 
+const file = document.getElementById("photo").files[0];
+ 
+if(!file){
+alert("Please select a photo first.");
+return;
+}
+ 
+document.getElementById("status").innerHTML =
+"🔍 Analyzing image...";
+ 
+const reader = new FileReader();
+ 
+reader.onload = async function(){
+ 
+try{
+ 
+const response = await fetch("/api/analyze", {
+method: "POST",
+headers: {
+"Content-Type":"application/json"
+},
+body: JSON.stringify({
+image: reader.result
+})
+});
+ 
+const data = await response.json();
+ 
+document.getElementById("status").innerHTML = `
+<div style="
+margin-top:20px;
+background:#1a1a1a;
+border:1px solid #333;
+border-radius:10px;
+padding:20px;
+text-align:left;
+max-width:600px;
+margin-left:auto;
+margin-right:auto;
+">
+<h3 style="color:#d4af37;">
+PRODIGY AI ANALYSIS
+</h3>
+ 
+<pre style="
+white-space:pre-wrap;
+color:white;
+font-family:Arial;
+">${data.result}</pre>
+</div>
+`;
+ 
+}catch(err){
+ 
+document.getElementById("status").innerHTML =
+"❌ Error during analysis";
+ 
+}
+ 
+};
+ 
+reader.readAsDataURL(file);
+ 
+}
 </script>
 </body>
 </html>
