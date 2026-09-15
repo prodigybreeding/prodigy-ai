@@ -78,3 +78,14 @@ error: error.message
 }
  
 }
+export default function handler(req, res) {
+res.status(200).json({
+success: true,
+prediction: "Conda",
+confidence: "92%",
+alternatives: [
+"Arctic",
+"Normal"
+]
+});
+}
