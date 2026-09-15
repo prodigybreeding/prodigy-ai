@@ -1,359 +1,105 @@
 <!DOCTYPE html>
 2
-<html lang="en">
+<html>
 3
- 
-4
 <head>
-5
- 
-6
+4
 <meta charset="UTF-8">
-7
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-8
- 
-9
+5
+<meta name="viewport" content="width=device-width, initial-scale=1">
+6
 <title>Prodigy AI</title>
-10
+7
  
-11
+8
 <style>
-12
+9
  
+10
+body{
+11
+background:#0f0f0f;
+12
+color:white;
 13
-*{
+font-family:Arial,sans-serif;
 14
-margin:0;
+text-align:center;
 15
-padding:0;
+margin:0;
 16
-box-sizing:border-box;
+padding:40px 20px;
 17
 }
 18
  
 19
-body{
-20
-background:#0f0f0f;
-21
-color:white;
-22
-font-family:Arial, sans-serif;
-23
-text-align:center;
-24
-padding:40px 20px;
-25
-}
-26
- 
-27
 .logo{
-28
+20
 width:180px;
-29
-max-width:80%;
-30
+21
 margin-bottom:20px;
-31
+22
 }
-32
+23
  
-33
-.tagline{
-34
-font-family:Georgia, serif;
-35
-font-size:30px;
-36
-font-weight:400;
-37
+24
+h1{
+25
 color:#D4AF37;
-38
-line-height:1.5;
-39
-margin-bottom:40px;
-40
+26
+margin-bottom:10px;
+27
 }
+28
+ 
+29
+p{
+30
+color:#cccccc;
+31
+margin-bottom:30px;
+32
+}
+33
+ 
+34
+input[type=file]{
+35
+color:white;
+36
+}
+37
+ 
+38
+</style>
+39
+ 
+40
+</head>
 41
  
 42
-.upload-box{
-43
-background:#1a1a1a;
-44
-border:1px solid #2a2a2a;
-45
-border-radius:12px;
-46
-padding:25px;
-47
-max-width:600px;
-48
-margin:auto;
-49
-}
-50
- 
-51
-input[type=file]{
-52
-color:white;
-53
-margin-bottom:20px;
-54
-}
-55
- 
-56
-.preview{
-57
-display:none;
-58
-max-width:100%;
-59
-max-height:500px;
-60
-border-radius:12px;
-61
-margin-top:20px;
-62
-}
-63
- 
-64
-.analyze-btn{
-65
- 
-66
-background:#D4AF37;
-67
-color:black;
-68
- 
-69
-border:none;
-70
-padding:14px 30px;
-71
- 
-72
-border-radius:8px;
-73
- 
-74
-font-size:16px;
-75
-font-weight:bold;
-76
- 
-77
-cursor:pointer;
-78
- 
-79
-transition:0.2s;
-80
-}
-81
- 
-82
-.analyze-btn:hover{
-83
-opacity:.9;
-84
-}
-85
- 
-86
-#status{
-87
-margin-top:20px;
-88
-color:#D4AF37;
-89
-}
-90
- 
-91
-.footer{
-92
-margin-top:50px;
-93
-color:#777;
-94
-font-size:13px;
-95
-}
-96
- 
-97
-</style>
-98
- 
-99
-</head>
-100
- 
-101
 <body>
-102
+43
  
-103
-<img
-104
-src="logo.png"
-105
-alt="Prodigy Logo"
-106
-class="logo">
-107
+44
+<img src="logo.png" class="logo" alt="Prodigy Logo">
+45
  
-108
-<h2 class="tagline">
-109
-Western Hognose<br>
-110
-Morph Identification
-111
-</h2>
-112
+46
+<h1>PRODIGY AI</h1>
+47
  
-113
-<div class="upload-box">
-114
+48
+<p>Western Hognose Morph Identification</p>
+49
  
-115
-<input
-116
-type="file"
-117
-id="photo"
-118
-accept="image/*"
-119
-capture="environment">
-120
+50
+<input type="file" accept="image/*">
+51
  
-121
-<br>
-122
- 
-123
-<button
-124
-class="analyze-btn"
-125
-onclick="analyzeMorph()">
-126
- 
-127
-Analyze Morph
-128
- 
-129
-</button>
-130
- 
-131
-<img
-132
-id="preview"
-133
-class="preview">
-134
- 
-135
-<div id="status"></div>
-136
- 
-137
-</div>
-138
- 
-139
-<div class="footer">
-140
- 
-141
-Powered by Prodigy Selective Breeding
-142
- 
-143
-</div>
-144
- 
-145
-<script>
-146
- 
-147
-const photoInput = document.getElementById("photo");
-148
-const preview = document.getElementById("preview");
-149
- 
-150
-photoInput.addEventListener("change", function(event){
-151
- 
-152
-const file = event.target.files[0];
-153
- 
-154
-if(!file) return;
-155
- 
-156
-preview.src = URL.createObjectURL(file);
-157
-preview.style.display = "block";
-158
-});
-159
- 
-160
-function analyzeMorph(){
-161
- 
-162
-const file =
-163
-document.getElementById("photo").files[0];
-164
- 
-165
-if(!file){
-166
- 
-167
-alert("Please select a photo first.");
-168
- 
-169
-return;
-170
-}
-171
- 
-172
-document.getElementById("status").innerHTML =
-173
-"🔍 Analyzing image...";
-174
-}
-175
- 
-176
-</script>
-177
- 
-178
+52
 </body>
-179
- 
-180
+53
 </html>
