@@ -29,23 +29,48 @@ const preview=document.getElementById('preview');
 input.addEventListener('change',function(e){const file=e.target.files[0];if(!file)return;preview.src=URL.createObjectURL(file);preview.style.display='block';});
 async function analyzeMorph(){
  
+const file = document.getElementById('photo').files[0];
+ 
+if(!file){
+alert('Please select an image first.');
+return;
+}
+ 
 document.getElementById('status').innerHTML =
-'TEST FRONTEND';
+'Analyzing image...';
+ 
+const reader = new FileReader();
+ 
+reader.onload = async function(){
+ 
+try{
  
 const response = await fetch('/api/analyze', {
-method:'POST',
-headers:{
+method: 'POST',
+headers: {
 'Content-Type':'application/json'
 },
 body: JSON.stringify({
-image:'test'
+image: reader.result
 })
 });
  
 const data = await response.json();
  
 document.getElementById('status').innerHTML =
-JSON.stringify(data);
+'<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+ 
+}
+catch(error){
+ 
+document.getElementById('status').innerHTML =
+'Error during analysis';
+ 
+}
+ 
+};
+ 
+reader.readAsDataURL(file);
  
 }
 </script>
