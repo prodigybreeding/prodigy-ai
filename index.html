@@ -1,133 +1,53 @@
 <!DOCTYPE html>
-2
 <html>
-3
 <head>
-4
 <meta charset="UTF-8">
-5
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prodigy AI</title>
-6
- 
-7
+
 <style>
-8
+
 body{
-9
-background:#0f0f0f;
-10
-color:white;
-11
-font-family:Arial;
-12
-text-align:center;
-13
-padding:40px;
-14
+    background:#0f0f0f;
+    color:white;
+    font-family:Arial,sans-serif;
+    text-align:center;
+    margin:0;
+    padding:40px 20px;
 }
-15
- 
-16
+
 .logo{
-17
-max-width:300px;
-18
+    width:180px;
+    margin-bottom:20px;
 }
-19
- 
-20
-.card{
-21
-max-width:700px;
-22
-margin:auto;
-23
-background:#1a1a1a;
-24
-padding:25px;
-25
-border-radius:12px;
-26
-border:1px solid #333;
-27
-}
-28
- 
-29
+
 h1{
-30
-color:#d4af37;
-31
+    color:#D4AF37;
+    margin-bottom:10px;
 }
-32
- 
-33
-.result{
-34
-margin-top:20px;
-35
-padding:20px;
-36
-border:1px solid #333;
-37
-border-radius:8px;
-38
-text-align:left;
-39
+
+p{
+    color:#cccccc;
+    margin-bottom:30px;
 }
-40
+
+input[type=file]{
+    color:white;
+}
+
 </style>
-41
- 
-42
+
 </head>
-43
- 
-44
+
 <body>
-45
- 
-46
-<img src="logo.png" class="logo">
-47
- 
-48
+
+<img src="logo.png" class="logo" alt="Prodigy Logo">
+
 <h1>PRODIGY AI</h1>
-49
- 
-50
+
 <p>Western Hognose Morph Identification</p>
-51
- 
-52
-<div class="card">
-53
- 
-54
-<input type="file" id="photo">
-55
- 
-56
-<div class="result">
-57
- 
-58
-<h3>PRODIGY AI ANALYSIS</h3>
-59
- 
-60
-<p>Upload a photo to begin.</p>
-61
- 
-62
-</div>
-63
- 
-64
-</div>
-65
- 
-66
+
+<input type="file" accept="image/*">
+
 </body>
-67
 </html>
