@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+2
+<html lang="en">
+3
+<head>
+4
+<meta charset="UTF-8">
+5
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+6
+<title>Prodigy Morph</title>
+7
+ 
+8
+<style>
+9
+*{
+10
+margin:0;
+11
+padding:0;
+12
+box-sizing:border-box;
+13
+}
+14
+ 
+15
+body{
+16
+font-family: Arial, Helvetica, sans-serif;
+17
+background:#050505;
+18
+color:#fff;
+19
+min-height:100vh;
+20
+display:flex;
+21
+justify-content:center;
+22
+align-items:center;
+23
+padding:40px 20px;
+24
+}
+25
+ 
+26
+.container{
+27
+max-width:900px;
+28
+width:100%;
+29
+text-align:center;
+30
+}
+31
+ 
+32
+.logo{
+33
+width:420px;
+34
+max-width:90%;
+35
+margin-bottom:20px;
+36
+}
+37
+ 
+38
+h1{
+39
+font-size:3rem;
+40
+color:#d9a24b;
+41
+margin-bottom:10px;
+42
+letter-spacing:2px;
+43
+}
+44
+ 
+45
+.subtitle{
+46
+color:#d8d8d8;
+47
+font-size:1.1rem;
+48
+margin-bottom:40px;
+49
+}
+50
+ 
+51
+.card{
+52
+background:#111;
+53
+border:1px solid #2a2a2a;
+54
+border-radius:18px;
+55
+padding:40px;
+56
+box-shadow:0 0 30px rgba(212,160,70,.15);
+57
+}
+58
+ 
+59
+input[type="file"]{
+60
+margin:20px 0;
+61
+color:white;
+62
+}
+63
+ 
+64
+button{
+65
+background:linear-gradient(135deg,#f4d07f,#b97a21);
+66
+color:black;
+67
+border:none;
+68
+padding:15px 35px;
+69
+font-size:16px;
+70
+font-weight:bold;
+71
+border-radius:10px;
+72
+cursor:pointer;
+73
+transition:.2s;
+74
+}
+75
+ 
+76
+button:hover{
+77
+transform:translateY(-2px);
+78
+}
+79
+ 
+80
+.result{
+81
+margin-top:30px;
+82
+padding:20px;
+83
+border:1px solid #333;
+84
+border-radius:12px;
+85
+display:none;
+86
+}
+87
+ 
+88
+.confidence{
+89
+color:#d9a24b;
+90
+font-weight:bold;
+91
+}
+92
+</style>
+93
+</head>
+94
+ 
+95
+<body>
+96
+ 
+97
+<div class="container">
+98
+ 
+99
+<img src="logo<div class="card">
+100
+ 
+101
+<h1>PRODIGY MORPH</h1>
+102
+ 
+103
+<p class="subtitle">
+104
+AI Powered Ball Python Morph Identification
+105
+</p>
+106
+ 
+107
+<input type="file" id="imageUpload" accept="image/*">
+108
+ 
+109
+<br>
+110
+ 
+111
+<button onclick="analyzeMorph()">
+112
+Analyze Morph
+113
+</button>
+114
+ 
+115
+<div class="result" id="resultBox">
+116
+<h2>Analysis Result</h2>
+117
+ 
+118
+<p><strong>Predicted Morph:</strong> Pastel Clown</p>
+119
+ 
+120
+<p class="confidence">
+121
+Confidence: 87%
+122
+</p>
+123
+ 
+124
+<br>
+125
+ 
+126
+<p>Alternative Predictions:</p>
+127
+ 
+128
+<p>• Clown - 8%</p>
+129
+<p>• Pastel - 5%</p>
+130
+</div>
+131
+ 
+132
+</div>
+133
+ 
+134
+</div>
+135
+ 
+136
+<script>
+137
+function analyzeMorph() {
+138
+document.getElementById("resultBox").style.display = "block";
+139
+}
+140
+</script>
+141
+ 
+142
+</body>
+143
+</html>
