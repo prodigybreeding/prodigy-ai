@@ -66,9 +66,7 @@ max_tokens: 300
 );
  
 const data = await response.json();
- 
-return res.status(200).json({
-result: data.choices[0].message.content
+return res.status(200).json(data);
 });
  
 } catch (error) {
